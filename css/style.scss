@@ -1,4 +1,13 @@
-$waterBlue: #09c;
+$waterColor: #09c;
+$sandColor: #E9D3AC;
+
+$minDepth: 441;
+$emptyDepth: 471;
+$fullDepth: 681;
+$maxDepth: 711;
+@function depthNotchHeight($height) {
+  @return ($height - $minDepth)/($maxDepth - $minDepth) * 100%
+}
 
 html, body {
  height: 100%;
@@ -51,7 +60,7 @@ body {
   bottom: 1em; //to counteract the wave height so it looks accurate
   width: 100%;
   left: 0;
-  background: $waterBlue;
+  background: $waterColor;
   background-image: -webkit-radial-gradient(white 70%, transparent 87%);
   background-image: radial-gradient(white 70%, transparent 87%);
   background-size:4em 2em;
@@ -65,13 +74,26 @@ body {
 }
 
 
-#blue-fill {
+#water-fill {
   position: absolute;
   bottom: 0;
   width: 100%;
   left: 0;
   height: 1em;
-  background: $waterBlue;
+  background: $waterColor;
+}
+
+#sand-fill {
+  display: none;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  left: 0;
+  height: depthNotchHeight($emptyDepth);
+  background: $sandColor;
+  background: -webkit-linear-gradient(top,  $waterColor 0%, $sandColor 10%);
+  background: linear-gradient(to bottom,  $waterColor 0%, $sandColor 10%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$waterColor', endColorstr='$sandColor', GradientType=0 );
 }
 
 @-webkit-keyframes waves {
@@ -158,14 +180,6 @@ body {
 
   .depth {
     display: none;
-
-    $minDepth: 441;
-    $emptyDepth: 471;
-    $fullDepth: 681;
-    $maxDepth: 711;
-    @function depthNotchHeight($height) {
-      @return ($height - $minDepth)/($maxDepth - $minDepth) * 100%
-    }
 
     .level-0 {
       bottom: depthNotchHeight(471);
@@ -301,7 +315,7 @@ body {
 
     &.selected {
       cursor: default;
-      background-color: $waterBlue;
+      background-color: $waterColor;
       color: #fff;
       border-radius: 20px;
       position: relative;
@@ -313,7 +327,7 @@ body {
         margin-left: -8px;
         border-width: 8px 8px 0;
         border-style: solid;
-        border-color: $waterBlue transparent;
+        border-color: $waterColor transparent;
         display: block;
         width: 0;
       }

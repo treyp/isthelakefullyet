@@ -54,13 +54,25 @@ body {
   -webkit-animation: waves 9s cubic-bezier(0, 0, 0.48, 0.8) infinite;
   animation: waves 9s cubic-bezier(0, 0, 0.48, 0.8) infinite; }
 
-#blue-fill {
+#water-fill {
   position: absolute;
   bottom: 0;
   width: 100%;
   left: 0;
   height: 1em;
   background: #09c; }
+
+#sand-fill {
+  display: none;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  left: 0;
+  height: 11.11111%;
+  background: #E9D3AC;
+  background: -webkit-linear-gradient(top, #09c 0%, #E9D3AC 10%);
+  background: linear-gradient(to bottom, #09c 0%, #E9D3AC 10%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$waterColor', endColorstr='$sandColor', GradientType=0 ); }
 
 @-webkit-keyframes waves {
   from {

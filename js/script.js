@@ -61,6 +61,7 @@ function updatePercentage(percentageFull, percentageMax, remainingMessage) {
 }
 
 function displayDepth() {
+  $('#sand-fill').show();
   updateSwitch('depth');
   updateNotches('depth');
   updatePercentage(
@@ -73,6 +74,7 @@ function displayDepth() {
 function displayVolume() {
   var percentageFull = 100 * (waterLevels.currentVolume / waterLevels.fullVolume);
 
+  $('#sand-fill').hide();
   updateSwitch('volume');
   updateNotches('volume');
   updatePercentage(
